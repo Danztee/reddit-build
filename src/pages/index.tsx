@@ -1,4 +1,4 @@
-import { Flex, Stack } from "@chakra-ui/react";
+import { Flex, Spinner, Stack } from "@chakra-ui/react";
 import {
   collection,
   getDocs,
@@ -24,6 +24,7 @@ import usePosts from "../hooks/usePosts";
 const Home = () => {
   const [user, loadingUser] = useAuthState(auth);
   const [loading, setLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const {
     setPostStateValue,
     postStateValue,
@@ -35,6 +36,7 @@ const Home = () => {
   const { communityStateValue } = useCommunityData();
 
   const buildNoUserHomeFeed = useCallback(async () => {
+    setLoading(true);
     try {
       const postQuery = query(
         collection(firestore, "posts"),
@@ -51,6 +53,8 @@ const Home = () => {
     } catch (error) {
       console.log("buildNoUserHomeFeed Error", error);
     }
+    setLoading(false);
+    setPageLoading(false);
   }, [setPostStateValue]);
 
   const buildUserHomeFeed = useCallback(async () => {
@@ -82,6 +86,7 @@ const Home = () => {
       console.log("buildUserHomeFeed Error", error);
     }
     setLoading(false);
+    setPageLoading(false);
   }, [buildNoUserHomeFeed, communityStateValue.mySnippets, setPostStateValue]);
 
   const getUserPostVotes = useCallback(async () => {
@@ -124,6 +129,19 @@ const Home = () => {
     };
   }, [getUserPostVotes, postStateValue.posts.length, setPostStateValue, user]);
 
+  if (pageLoading)
+    return (
+      <Flex justifyContent="center" height="90vh" alignItems="center">
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="red.500"
+          size="xl"
+        />
+      </Flex>
+    );
+
   return (
     <PageContent>
       <></>
@@ -152,6 +170,7 @@ const Home = () => {
           </Stack>
         )}
       </>
+
       <Stack spacing={5} position="sticky" top={!user ? "3.8rem" : ""}>
         {user && (
           <>

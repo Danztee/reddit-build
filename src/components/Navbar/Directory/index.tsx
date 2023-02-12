@@ -11,8 +11,6 @@ import {
 import { User } from "firebase/auth";
 import { useRouter } from "next/router";
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
-import { CiUser } from "react-icons/ci";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "../../../atoms/authModalAtom";
 import useDirectory from "../../../hooks/useDirectory";
@@ -40,7 +38,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
         <Flex
           align="center"
           justifyContent="space-between"
-          width={{ base: "auto", lg: "16rem" }}
+          width={{ base: "11rem", lg: "16rem" }}
         >
           <Flex align="center">
             {/* {router.pathname === "/" && (
@@ -66,7 +64,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
               />
             )}
 
-            <Flex display={{ base: "none", lg: "flex" }}>
+            <Flex>
               <Text fontWeight={600}>
                 {directoryState.selectedMenuItem.displayText}
               </Text>
