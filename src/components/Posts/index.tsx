@@ -1,5 +1,6 @@
-import { Alert, AlertIcon, Stack } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, Stack, Text } from "@chakra-ui/react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilValue } from "recoil";
@@ -45,7 +46,6 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
         ...prev,
         posts: posts as Post[],
       }));
-      console.log("posts", posts);
     } catch (error: any) {
       console.log("getPosts Error", error);
     }
@@ -63,22 +63,35 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
       {loading ? (
         <PostLoader />
       ) : (
-        <Stack>
-          {postStateValue.posts.map((post, index) => (
-            <PostItem
-              key={index}
-              post={post}
-              userIsCreator={user?.uid === post.creatorId}
-              userVoteValue={
-                postStateValue.postVotes.find((vote) => vote.postId === post.id)
-                  ?.voteValue
-              }
-              onVote={onVote}
-              onSelectPost={onSelectPost}
-              onDeletePost={onDeletePost}
-            />
-          ))}
-        </Stack>
+        <>
+          {postStateValue.posts.length === 0 && (
+            <div className="flex justify-center flex-col items-center mt-10">
+              <Text>You haven&apos;t created any post</Text>
+              <Link href={`/r/${communityData.id}/submit`}>
+                <Button mt={3} height="30px" width="10rem" fontWeight={700}>
+                  Create Post
+                </Button>
+              </Link>
+            </div>
+          )}
+          <Stack>
+            {postStateValue.posts.map((post, index) => (
+              <PostItem
+                key={index}
+                post={post}
+                userIsCreator={user?.uid === post.creatorId}
+                userVoteValue={
+                  postStateValue.postVotes.find(
+                    (vote) => vote.postId === post.id
+                  )?.voteValue
+                }
+                onVote={onVote}
+                onSelectPost={onSelectPost}
+                onDeletePost={onDeletePost}
+              />
+            ))}
+          </Stack>
+        </>
       )}
 
       {postDeletedValue.deleted && (

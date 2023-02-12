@@ -166,7 +166,6 @@ const Comments: React.FC<CommentsProps> = ({
         mb={6}
         fontSize="10pt"
         width="100%"
-        // p={{ base: "0" }}
       >
         {!fetchLoading && (
           <CommentInput

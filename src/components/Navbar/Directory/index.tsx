@@ -41,12 +41,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
           width={{ base: "11rem", lg: "16rem" }}
         >
           <Flex align="center">
-            {/* {router.pathname === "/" && (
-              <>
-                <Icon fontSize={24} mr={{ base: 1, md: 2 }} as={AiFillHome} />
-                <Text>Home</Text>
-              </>
-            )} */}
             {directoryState.selectedMenuItem.imageURL ? (
               <Image
                 src={directoryState.selectedMenuItem.imageURL}

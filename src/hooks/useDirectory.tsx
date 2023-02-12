@@ -31,6 +31,7 @@ const useDirectory = () => {
   };
 
   useEffect(() => {
+    if (router.pathname === "/") return;
     const { currentCommunity } = communityStateValue;
 
     if (currentCommunity) {
@@ -45,7 +46,7 @@ const useDirectory = () => {
         },
       }));
     }
-  }, [communityStateValue, setDirectoryState]);
+  }, [communityStateValue, router.pathname, setDirectoryState]);
 
   return { directoryState, toggleMenuOpen, onSelectMenuItem };
 };
