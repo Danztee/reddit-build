@@ -161,11 +161,12 @@ const Comments: React.FC<CommentsProps> = ({
     <Box bg="white" borderRadius="0px 0px 4px 4px" p={2}>
       <Flex
         direction="column"
-        pl={10}
-        pr={4}
+        pl={{ base: 0, md: 10 }}
+        pr={{ base: 0, md: 4 }}
         mb={6}
         fontSize="10pt"
         width="100%"
+        // p={{ base: "0" }}
       >
         {!fetchLoading && (
           <CommentInput

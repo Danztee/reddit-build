@@ -54,6 +54,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                 borderRadius="full"
                 boxSize="24px"
                 mr={2}
+                display={{ base: "none", md: "inline-block" }}
               />
             ) : (
               <Icon
@@ -61,6 +62,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                 mr={{ base: 1, md: 2 }}
                 as={directoryState.selectedMenuItem.icon}
                 color={directoryState.selectedMenuItem.iconColor}
+                display={{ base: "none", md: "inline-block" }}
               />
             )}
 

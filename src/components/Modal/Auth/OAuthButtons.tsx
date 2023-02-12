@@ -37,7 +37,7 @@ const OAuthButtons: React.FC = () => {
         variant="oauth"
         height="40px"
         justifyContent="start"
-        gap="3rem"
+        gap={{ base: "1rem", md: "3rem" }}
         color="gray.600"
         mb={4}
         isLoading={loadingGoogle}
@@ -53,7 +53,7 @@ const OAuthButtons: React.FC = () => {
         variant="oauth"
         height="40px"
         justifyContent="start"
-        gap="3rem"
+        gap={{ base: "1rem", md: "3rem" }}
         color="gray.600"
         isLoading={loadingFacebook}
         onClick={() => signInWithFacebook()}

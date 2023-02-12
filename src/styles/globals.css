@@ -86,22 +86,17 @@ input:checked + .slider:before {
   z-index: 50;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  body {
-    background: #333;
-    color: white;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    background: white;
-    color: #555;
-  }
-} */
-
 .css-xl71ch {
   display: flex;
   align-items: center;
-  /* margin-left: -12rem; */
+}
+
+.css-1rpr8xw {
+  margin-right: 0 !important;
+}
+
+.chakra-modal__content {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  overflow: scroll;
 }

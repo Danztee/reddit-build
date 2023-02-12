@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
       height="50px"
       padding="6px 12px"
       gap="2%"
-      justify={{ md: "space-between" }}
+      justify="space-between"
       style={{
         position: "fixed",
         width: "100%",

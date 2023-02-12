@@ -87,7 +87,7 @@ const AuthModal: React.FC = () => {
               direction="column"
               align="center"
               justify="center"
-              width="70%"
+              width={{ base: "90%", md: "70%" }}
             >
               {modalState.view === "login" || modalState.view === "signup" ? (
                 <>
