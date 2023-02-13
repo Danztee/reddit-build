@@ -39,7 +39,7 @@ const AuthModal: React.FC = () => {
       <Modal
         isOpen={modalState.open}
         onClose={handleClose}
-        scrollBehavior="inside"
+        scrollBehavior="outside"
       >
         <ModalOverlay />
         <ModalContent>
@@ -55,10 +55,9 @@ const AuthModal: React.FC = () => {
             alignItems="center"
             justifyContent="center"
             pb={6}
-            overflow="scroll"
           >
             {modalState.view === "login" && (
-              <Text fontSize="9pt" mb={10}>
+              <Text fontSize="9pt" mb={10} className="mt-[-1rem]">
                 By continuing, you agree are setting up a Reddit account and
                 agree to our{" "}
                 <Link href="/" className="text-[#0079d3]">

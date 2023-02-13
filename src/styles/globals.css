@@ -98,5 +98,5 @@ input:checked + .slider:before {
 .chakra-modal__content {
   margin-left: 1rem;
   margin-right: 1rem;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
