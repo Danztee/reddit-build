@@ -57,6 +57,7 @@ const AuthModal: React.FC = () => {
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
+        scrollBehavior="outside"
       >
         <ModalOverlay />
         <ModalContent>
