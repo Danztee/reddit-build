@@ -174,11 +174,17 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     isChecked={communityType === "public"}
                     onChange={onCommunityTypeChange}
                   >
-                    <Flex align="center">
-                      <Icon as={BsFillPersonFill} color="gray.500" mr={2} />
-                      <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
-                        Public
-                      </Text>
+                    <Flex
+                      align="center"
+                      flexWrap="wrap"
+                      className="gap-0 md:gap-2"
+                    >
+                      <div className="flex items-center">
+                        <Icon as={BsFillPersonFill} color="gray.500" mr={2} />
+                        <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
+                          Public
+                        </Text>
+                      </div>
                       <Text fontSize="9pt" color="gray.500" mt={1}>
                         Anyone can view, post, and comment to this community
                       </Text>
@@ -189,11 +195,17 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     isChecked={communityType === "restricted"}
                     onChange={onCommunityTypeChange}
                   >
-                    <Flex align="center">
-                      <Icon as={BsFillEyeFill} color="gray.500" mr={2} />
-                      <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
-                        Restricted
-                      </Text>
+                    <Flex
+                      align="center"
+                      flexWrap="wrap"
+                      className="gap-0 md:gap-2"
+                    >
+                      <div className="flex items-center">
+                        <Icon as={BsFillEyeFill} color="gray.500" mr={2} />
+                        <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
+                          Restricted
+                        </Text>
+                      </div>
                       <Text fontSize="9pt" color="gray.500" mt={1}>
                         Anyone can view this community, but only approved users
                         can post
@@ -205,11 +217,17 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     isChecked={communityType === "private"}
                     onChange={onCommunityTypeChange}
                   >
-                    <Flex align="center">
-                      <Icon as={HiLockClosed} color="gray.500" mr={2} />
-                      <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
-                        Private
-                      </Text>
+                    <Flex
+                      align="center"
+                      flexWrap="wrap"
+                      className="gap-0 md:gap-2"
+                    >
+                      <div className="flex items-center">
+                        <Icon as={HiLockClosed} color="gray.500" mr={2} />
+                        <Text fontSize="10pt" mr={1} fontWeight={600} mt={1}>
+                          Private
+                        </Text>
+                      </div>
                       <Text fontSize="9pt" color="gray.500" mt={1}>
                         Only approved users can view and submit to this
                         community
