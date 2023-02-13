@@ -1,4 +1,4 @@
-import { Flex, Spinner, Stack } from "@chakra-ui/react";
+import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import {
   collection,
   getDocs,
@@ -41,7 +41,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         orderBy("voteStatus", "desc"),
-        limit(10)
+        limit(20)
       );
 
       const postDocs = await getDocs(postQuery);
@@ -68,7 +68,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         where("communityId", "in", myCommunityIds),
-        limit(10)
+        limit(20)
       );
 
       const postDocs = await getDocs(postQuery);
@@ -150,24 +150,33 @@ const Home = () => {
         {loading ? (
           <PostLoader />
         ) : (
-          <Stack>
-            {postStateValue.posts.map((post, index) => (
-              <PostItem
-                key={index}
-                post={post}
-                userIsCreator={user?.uid === post.creatorId}
-                userVoteValue={
-                  postStateValue.postVotes.find(
-                    (vote) => vote.postId === post.id
-                  )?.voteValue
-                }
-                onVote={onVote}
-                onSelectPost={onSelectPost}
-                onDeletePost={onDeletePost}
-                homePage
-              />
-            ))}
-          </Stack>
+          <>
+            {postStateValue.posts.length === 0 && (
+              <div className="flex justify-center flex-col items-center mt-10">
+                <Text fontSize="14pt">
+                  You have no feeds. Try joining some communities or create one.
+                </Text>
+              </div>
+            )}
+            <Stack>
+              {postStateValue.posts.map((post, index) => (
+                <PostItem
+                  key={index}
+                  post={post}
+                  userIsCreator={user?.uid === post.creatorId}
+                  userVoteValue={
+                    postStateValue.postVotes.find(
+                      (vote) => vote.postId === post.id
+                    )?.voteValue
+                  }
+                  onVote={onVote}
+                  onSelectPost={onSelectPost}
+                  onDeletePost={onDeletePost}
+                  homePage
+                />
+              ))}
+            </Stack>
+          </>
         )}
       </>
 

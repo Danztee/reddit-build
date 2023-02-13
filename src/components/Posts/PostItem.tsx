@@ -98,7 +98,10 @@ const PostItem: React.FC<PostItemProps> = ({
     setLoadingDelete(false);
   };
 
-  const db_link = post.link?.split("www.").pop();
+  const link1 = post.link?.split("www.").pop();
+  const link2 = link1?.split("http://").pop();
+  const db_link = link2?.split("https://").pop();
+
   const formattedLink =
     db_link!?.length > 16 ? db_link?.substring(0, 16) + "..." : db_link;
 
@@ -189,6 +192,7 @@ const PostItem: React.FC<PostItemProps> = ({
               className="text-[#3f9ade] hover:underline"
               target="_blank"
               rel="noreferrer"
+              style={{ width: "fit-content" }}
             >
               {formattedLink}{" "}
               <span>
