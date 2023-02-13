@@ -1,4 +1,4 @@
-import { Flex, Spinner, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, Spinner, Stack } from "@chakra-ui/react";
 import {
   collection,
   getDocs,
@@ -13,7 +13,6 @@ import { Post, PostVote } from "../atoms/postAtom";
 import CreatePostLink from "../components/Community/CreatePostLink";
 import PersonalHome from "../components/Community/PersonalHome";
 import Premium from "../components/Community/Premium";
-import Recommendations from "../components/Community/Recommendations";
 import Footer from "../components/Footer";
 import PageContent from "../components/Layout/PageContent";
 import RecommendationsModal from "../components/Modal/RecommendationsModal";
@@ -24,7 +23,7 @@ import useCommunityData from "../hooks/useCommunityData";
 import usePosts from "../hooks/usePosts";
 
 const Home = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [user, loadingUser] = useAuthState(auth);
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
@@ -131,6 +130,13 @@ const Home = () => {
       }));
     };
   }, [getUserPostVotes, postStateValue.posts.length, setPostStateValue, user]);
+
+  useEffect(() => {
+    if (!pageLoading)
+      setTimeout(() => {
+        setOpen(true);
+      }, 3000);
+  }, [pageLoading]);
 
   if (pageLoading)
     return (
