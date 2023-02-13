@@ -23,8 +23,9 @@ const RecommendationsModal: React.FC<RecommendationsModalProps> = ({
         <ModalContent>
           <Recommendations />
 
-          <ModalFooter>
+          <ModalFooter pr={0}>
             <Button
+              mr={3}
               bg="red"
               _hover={{ bg: "red" }}
               height="30px"

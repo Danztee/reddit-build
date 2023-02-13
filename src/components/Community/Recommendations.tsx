@@ -89,6 +89,14 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
               <SkeletonCircle size="10" />
               <Skeleton height="10px" width="70%" />
             </Flex>
+            <Flex justify="space-between" align="center">
+              <SkeletonCircle size="10" />
+              <Skeleton height="10px" width="70%" />
+            </Flex>
+            <Flex justify="space-between" align="center">
+              <SkeletonCircle size="10" />
+              <Skeleton height="10px" width="70%" />
+            </Flex>
           </Stack>
         ) : (
           <>
