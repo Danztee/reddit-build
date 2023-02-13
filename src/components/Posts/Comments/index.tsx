@@ -53,8 +53,8 @@ const Comments: React.FC<CommentsProps> = ({
     setCreateLoading(true);
     try {
       if (!user) {
-        setAuthModalState({ open: true, view: "login" });
-        return;
+        setCreateLoading(false);
+        return setAuthModalState({ open: true, view: "login" });
       }
 
       const batch = writeBatch(firestore);
