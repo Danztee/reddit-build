@@ -10,24 +10,19 @@ import {
   Text,
 } from "@chakra-ui/react";
 import moment from "moment";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-import {
-  AiOutlineCheckCircle,
-  AiOutlineDelete,
-  AiOutlineGift,
-} from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineGift } from "react-icons/ai";
 import { BiDownvote, BiUpvote } from "react-icons/bi";
-import { BsChatSquare, BsDot, BsShield } from "react-icons/bs";
-import { IoIosMore, IoIosRemoveCircleOutline } from "react-icons/io";
+import { BsChatSquare, BsDot } from "react-icons/bs";
+import { FaReddit } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
+import { IoIosMore } from "react-icons/io";
 import { IoArrowRedoOutline, IoBookmarkOutline } from "react-icons/io5";
-import { RiSpam2Line } from "react-icons/ri";
 import { useSetRecoilState } from "recoil";
 import { setTimeout } from "timers";
 import { Post, postDeleted } from "../../atoms/postAtom";
-import { FiExternalLink } from "react-icons/fi";
-import { useRouter } from "next/router";
-import { FaReddit } from "react-icons/fa";
-import Link from "next/link";
 
 type PostItemProps = {
   post: Post;
@@ -168,13 +163,14 @@ const PostItem: React.FC<PostItemProps> = ({
                 ) : (
                   <Icon as={FaReddit} fontSize="18pt" mr={1} color="blue.500" />
                 )}
-                <Link href={`r/${post.communityId}`}>
-                  <Text
-                    fontWeight={700}
-                    _hover={{ textDecoration: "underline" }}
-                    onClick={(e) => e.stopPropagation()}
-                  >{`r/${post.communityId}`}</Text>
-                </Link>
+
+                <Link
+                  href={`r/${post.communityId}`}
+                  className="hover:underline font-[700]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >{`r/${post.communityId}`}</Link>
                 <Icon as={BsDot} color="gray.500" fontSize={10} />
               </>
             )}

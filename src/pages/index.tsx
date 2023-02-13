@@ -41,7 +41,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         orderBy("voteStatus", "desc"),
-        limit(20)
+        limit(10)
       );
 
       const postDocs = await getDocs(postQuery);
@@ -68,7 +68,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         where("communityId", "in", myCommunityIds),
-        limit(20)
+        limit(10)
       );
 
       const postDocs = await getDocs(postQuery);
