@@ -150,33 +150,24 @@ const Home = () => {
         {loading ? (
           <PostLoader />
         ) : (
-          <>
-            {postStateValue.posts.length === 0 && (
-              <div className="flex justify-center flex-col items-center mt-10">
-                <Text fontSize="14pt">
-                  You have no feeds. Try joining some communities or create one.
-                </Text>
-              </div>
-            )}
-            <Stack>
-              {postStateValue.posts.map((post, index) => (
-                <PostItem
-                  key={index}
-                  post={post}
-                  userIsCreator={user?.uid === post.creatorId}
-                  userVoteValue={
-                    postStateValue.postVotes.find(
-                      (vote) => vote.postId === post.id
-                    )?.voteValue
-                  }
-                  onVote={onVote}
-                  onSelectPost={onSelectPost}
-                  onDeletePost={onDeletePost}
-                  homePage
-                />
-              ))}
-            </Stack>
-          </>
+          <Stack>
+            {postStateValue.posts.map((post, index) => (
+              <PostItem
+                key={index}
+                post={post}
+                userIsCreator={user?.uid === post.creatorId}
+                userVoteValue={
+                  postStateValue.postVotes.find(
+                    (vote) => vote.postId === post.id
+                  )?.voteValue
+                }
+                onVote={onVote}
+                onSelectPost={onSelectPost}
+                onDeletePost={onDeletePost}
+                homePage
+              />
+            ))}
+          </Stack>
         )}
       </>
 
