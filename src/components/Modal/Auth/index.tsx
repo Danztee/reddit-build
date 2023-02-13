@@ -39,7 +39,7 @@ const AuthModal: React.FC = () => {
       <Modal
         isOpen={modalState.open}
         onClose={handleClose}
-        scrollBehavior="outside"
+        size={{ base: "full", md: "lg" }}
       >
         <ModalOverlay />
         <ModalContent>
@@ -53,7 +53,8 @@ const AuthModal: React.FC = () => {
             display="flex"
             flexDirection="column"
             alignItems="center"
-            justifyContent="center"
+            justifyContent={{ md: "center" }}
+            marginTop={{ base: "2rem", md: "0" }}
             pb={6}
           >
             {modalState.view === "login" && (
