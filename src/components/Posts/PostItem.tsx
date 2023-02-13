@@ -168,7 +168,7 @@ const PostItem: React.FC<PostItemProps> = ({
                 ) : (
                   <Icon as={FaReddit} fontSize="18pt" mr={1} color="blue.500" />
                 )}
-                <Link href={`r/${post.communityId}`}>
+                <Link href={`/r/${post.communityId}`}>
                   <Text
                     fontWeight={700}
                     _hover={{ textDecoration: "underline" }}
