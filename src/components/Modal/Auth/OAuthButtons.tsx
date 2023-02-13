@@ -36,7 +36,7 @@ const OAuthButtons: React.FC = () => {
       <Button
         variant="oauth"
         height="40px"
-        justifyContent="start"
+        justifyContent={{ base: "center", md: "start" }}
         gap={{ base: "1rem", md: "3rem" }}
         color="gray.600"
         mb={4}
@@ -46,13 +46,18 @@ const OAuthButtons: React.FC = () => {
           justifyContent: loadingGoogle ? "center" : "",
         }}
       >
-        <Image src="/images/googlelogo.png" height="20px" alt="google" />
+        <Image
+          src="/images/googlelogo.png"
+          height="20px"
+          alt="google"
+          marginLeft={{ base: "-1rem", md: "0" }}
+        />
         <p> Continue with Google</p>
       </Button>
       <Button
         variant="oauth"
         height="40px"
-        justifyContent="start"
+        justifyContent={{ base: "center", md: "start" }}
         gap={{ base: "1rem", md: "3rem" }}
         color="gray.600"
         isLoading={loadingFacebook}
