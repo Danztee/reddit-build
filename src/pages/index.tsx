@@ -131,7 +131,7 @@ const Home = () => {
 
   if (pageLoading)
     return (
-      <Flex justifyContent="center" height="90vh" alignItems="center">
+      <Flex justifyContent="center" alignItems="center" height="30vh">
         <Spinner
           thickness="4px"
           speed="0.65s"
