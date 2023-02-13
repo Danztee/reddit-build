@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ communityData }) => {
   const { hovering, onHoverProps } = useHover();
 
   return (
-    <Flex direction="column" width="100%" height="146px">
+    <Flex direction="column" width="100%" height="150px">
       <Box height="80%" bg="blue.400" />
       <Flex justify="center" bg="white" flexGrow={1}>
         <Flex width="95%" maxWidth="1200px">

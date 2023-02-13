@@ -25,9 +25,10 @@ const RecommendationsModal: React.FC<RecommendationsModalProps> = ({
 
           <ModalFooter>
             <Button
-              colorScheme="blue"
-              height="35px"
-              width="8rem"
+              bg="red"
+              _hover={{ bg: "red" }}
+              height="30px"
+              width="7rem"
               onClick={handleClose}
             >
               Close

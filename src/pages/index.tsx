@@ -44,7 +44,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         orderBy("voteStatus", "desc"),
-        limit(10)
+        limit(20)
       );
 
       const postDocs = await getDocs(postQuery);
@@ -71,7 +71,7 @@ const Home = () => {
       const postQuery = query(
         collection(firestore, "posts"),
         where("communityId", "in", myCommunityIds),
-        limit(10)
+        limit(20)
       );
 
       const postDocs = await getDocs(postQuery);
@@ -94,7 +94,7 @@ const Home = () => {
 
   const getUserPostVotes = useCallback(async () => {
     try {
-      const postIds = postStateValue.posts.map((post) => post.id);
+      const postIds = postStateValue.posts.map((post) => post.id).slice(0, 10);
       const postVotesQuery = query(
         collection(firestore, `users/${user?.uid}/postVotes`),
         where("postId", "in", postIds)

@@ -70,6 +70,7 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
         backgroundSize="cover"
         bgGradient="linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75)),
           url('images/recCommsArt.png')"
+        fontSize="12pt"
       >
         Top Communities
       </Flex>
@@ -100,15 +101,15 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
                   <Flex
                     position="relative"
                     align="center"
-                    fontSize="10pt"
+                    fontSize="11pt"
                     borderBottom="1px solid"
                     borderColor="gray.200"
                     p="10px 12px"
                     fontWeight={600}
                   >
                     <Flex width="80%" align="center">
-                      <Flex width="15%">
-                        <Text mr={2}>{index + 1}</Text>
+                      <Flex width="8%">
+                        <Text mr={1}>{index + 1}</Text>
                       </Flex>
                       <Flex align="center" width="80%">
                         {item.imageURL ? (
@@ -138,11 +139,13 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
                     </Flex>
                     <Box position="absolute" right="10px">
                       <Button
-                        height="22px"
-                        fontSize="8pt"
+                        height="30px"
+                        fontSize="10pt"
+                        width="5rem"
                         onClick={(event) => {
-                          event.stopPropagation();
+                          event.preventDefault();
                           onJoinOrLeaveCommunity(item, isJoined);
+                          event.stopPropagation();
                         }}
                         variant={isJoined ? "outline" : "solid"}
                       >

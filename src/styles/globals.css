@@ -94,3 +94,13 @@ input:checked + .slider:before {
 .css-1rpr8xw {
   margin-right: 0 !important;
 }
+
+.css-z9fldg {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.css-19tsro {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
