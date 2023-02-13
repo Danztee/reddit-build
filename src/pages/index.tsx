@@ -1,4 +1,4 @@
-import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
+import { Flex, Spinner, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import {
   collection,
   getDocs,
@@ -13,8 +13,10 @@ import { Post, PostVote } from "../atoms/postAtom";
 import CreatePostLink from "../components/Community/CreatePostLink";
 import PersonalHome from "../components/Community/PersonalHome";
 import Premium from "../components/Community/Premium";
+import Recommendations from "../components/Community/Recommendations";
 import Footer from "../components/Footer";
 import PageContent from "../components/Layout/PageContent";
+import RecommendationsModal from "../components/Modal/RecommendationsModal";
 import PostItem from "../components/Posts/PostItem";
 import PostLoader from "../components/Posts/PostLoader";
 import { auth, firestore } from "../firebase/clientApp";
@@ -22,6 +24,7 @@ import useCommunityData from "../hooks/useCommunityData";
 import usePosts from "../hooks/usePosts";
 
 const Home = () => {
+  const [open, setOpen] = useState(true);
   const [user, loadingUser] = useAuthState(auth);
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
@@ -143,44 +146,47 @@ const Home = () => {
     );
 
   return (
-    <PageContent>
-      <></>
-      <>
-        {user && <CreatePostLink />}
-        {loading ? (
-          <PostLoader />
-        ) : (
-          <Stack>
-            {postStateValue.posts.map((post, index) => (
-              <PostItem
-                key={index}
-                post={post}
-                userIsCreator={user?.uid === post.creatorId}
-                userVoteValue={
-                  postStateValue.postVotes.find(
-                    (vote) => vote.postId === post.id
-                  )?.voteValue
-                }
-                onVote={onVote}
-                onSelectPost={onSelectPost}
-                onDeletePost={onDeletePost}
-                homePage
-              />
-            ))}
-          </Stack>
-        )}
-      </>
+    <>
+      <RecommendationsModal open={open} handleClose={() => setOpen(false)} />
+      <PageContent>
+        <></>
+        <>
+          {user && <CreatePostLink />}
+          {loading ? (
+            <PostLoader />
+          ) : (
+            <Stack>
+              {postStateValue.posts.map((post, index) => (
+                <PostItem
+                  key={index}
+                  post={post}
+                  userIsCreator={user?.uid === post.creatorId}
+                  userVoteValue={
+                    postStateValue.postVotes.find(
+                      (vote) => vote.postId === post.id
+                    )?.voteValue
+                  }
+                  onVote={onVote}
+                  onSelectPost={onSelectPost}
+                  onDeletePost={onDeletePost}
+                  homePage
+                />
+              ))}
+            </Stack>
+          )}
+        </>
 
-      <Stack spacing={5} position="sticky" top={!user ? "3.8rem" : ""}>
-        {user && (
-          <>
-            <Premium />
-            <PersonalHome />
-          </>
-        )}
-        <Footer />
-      </Stack>
-    </PageContent>
+        <Stack spacing={5} position="sticky" top={!user ? "3.8rem" : ""}>
+          {user && (
+            <>
+              <Premium />
+              <PersonalHome />
+            </>
+          )}
+          <Footer />
+        </Stack>
+      </PageContent>
+    </>
   );
 };
 
