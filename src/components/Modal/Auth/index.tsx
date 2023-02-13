@@ -39,7 +39,7 @@ const AuthModal: React.FC = () => {
       <Modal
         isOpen={modalState.open}
         onClose={handleClose}
-        scrollBehavior="outside"
+        scrollBehavior="inside"
       >
         <ModalOverlay />
         <ModalContent>
