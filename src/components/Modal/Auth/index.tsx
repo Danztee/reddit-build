@@ -40,7 +40,7 @@ const AuthModal: React.FC = () => {
         isOpen={modalState.open}
         onClose={handleClose}
         size={{ base: "full", md: "lg" }}
-        scrollBehavior="outside"
+        blockScrollOnMount={false} 
       >
         <ModalOverlay />
         <ModalContent>
