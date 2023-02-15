@@ -93,9 +93,13 @@ const PostItem: React.FC<PostItemProps> = ({
     setLoadingDelete(false);
   };
 
-  const link1 = post.link?.split("www.").pop();
-  const link2 = link1?.split("http://").pop();
-  const db_link = link2?.split("https://").pop();
+  const db_link = post.link
+    ?.split("www.")
+    .pop()
+    ?.split("http://")
+    .pop()
+    ?.split("https://")
+    .pop();
 
   const formattedLink =
     db_link!?.length > 16 ? db_link?.substring(0, 16) + "..." : db_link;

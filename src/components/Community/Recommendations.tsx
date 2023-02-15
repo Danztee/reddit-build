@@ -105,7 +105,7 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
                 (snippet) => snippet.communityId === item.id
               );
               return (
-                <Link key={item.id} href={`/r/${item.id}`}>
+                <Link key={item.id} href={`r/${item.id}`}>
                   <Flex
                     position="relative"
                     align="center"
@@ -114,6 +114,7 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
                     borderColor="gray.200"
                     p="10px 12px"
                     fontWeight={600}
+                    _hover={{ bg: "gray.100" }}
                   >
                     <Flex width="80%" align="center">
                       <Flex width="8%">
@@ -164,11 +165,6 @@ const Recommendations: React.FC<RecommendationsProps> = () => {
                 </Link>
               );
             })}
-            {/* <Box p="10px 20px">
-              <Button height="30px" width="100%">
-                View All
-              </Button>
-            </Box> */}
           </>
         )}
       </Flex>
