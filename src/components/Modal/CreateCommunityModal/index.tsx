@@ -116,7 +116,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
         isOpen={open}
         onClose={handleClose}
         size="xl"
-        scrollBehavior="outside"
+        blockScrollOnMount={false} 
       >
         <ModalOverlay />
         <ModalContent>
