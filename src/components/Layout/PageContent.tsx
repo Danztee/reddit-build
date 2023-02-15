@@ -8,7 +8,6 @@ type PageContentProps = {
 
 const PageContent: React.FC<PageContentProps> = ({ children }) => {
   const router = useRouter();
-  console.log();
 
   router.pathname === "/r/[communityId]/comments/[pid]" ? "" : "";
   return (

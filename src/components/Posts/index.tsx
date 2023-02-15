@@ -66,7 +66,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
         <>
           {postStateValue.posts.length === 0 && (
             <div className="flex justify-center flex-col items-center mt-10">
-              <Text>You haven&apos;t created any post</Text>
+              <Text>No post here yet</Text>
               <Link href={`/r/${communityData.id}/submit`}>
                 <Button mt={3} height="30px" width="10rem" fontWeight={700}>
                   Create Post

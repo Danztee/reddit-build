@@ -5,6 +5,7 @@ import {
   limit,
   orderBy,
   query,
+  startAfter,
   where,
 } from "firebase/firestore";
 import { useCallback, useEffect, useState } from "react";
@@ -37,13 +38,15 @@ const Home = () => {
 
   const { communityStateValue } = useCommunityData();
 
+  // let latestDoc = null;
   const buildNoUserHomeFeed = useCallback(async () => {
     setLoading(true);
     try {
       const postQuery = query(
         collection(firestore, "posts"),
         orderBy("voteStatus", "desc"),
-        limit(20)
+        // startAfter(latestDoc || 0),
+        limit(10)
       );
 
       const postDocs = await getDocs(postQuery);

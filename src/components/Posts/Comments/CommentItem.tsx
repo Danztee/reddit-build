@@ -1,11 +1,9 @@
 import { Box, Flex, Icon, Spinner, Stack, Text } from "@chakra-ui/react";
-import { User } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 import React from "react";
-import { BiUpvote, BiDownvote } from "react-icons/bi";
+import { BiDownvote, BiUpvote } from "react-icons/bi";
 import { FaReddit } from "react-icons/fa";
-import usePosts from "../../../hooks/usePosts";
 
 export type Comment = {
   id: string;
