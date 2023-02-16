@@ -60,10 +60,6 @@ const Home = () => {
     setPageLoading(false);
   }, [setPostStateValue]);
 
-  const handleClick = async () => {
-    buildNoUserHomeFeed();
-  };
-
   const buildUserHomeFeed = useCallback(async () => {
     setLoading(true);
 

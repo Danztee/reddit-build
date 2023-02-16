@@ -168,13 +168,14 @@ const PostItem: React.FC<PostItemProps> = ({
                   <Icon as={FaReddit} fontSize="18pt" mr={1} color="blue.500" />
                 )}
 
-                <Link
-                  href={`r/${post.communityId}`}
+                <span
+                  // href={`r/${post.communityId}`}
                   className="hover:underline font-[700]"
                   onClick={(e) => {
+                    router.push(`r/${post.communityId}`);
                     e.stopPropagation();
                   }}
-                >{`r/${post.communityId}`}</Link>
+                >{`r/${post.communityId}`}</span>
                 <Icon as={BsDot} color="gray.500" fontSize={10} />
               </>
             )}
