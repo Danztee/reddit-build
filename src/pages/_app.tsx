@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Reddit Build</title>
         <meta
           name="description"
-          content="Reddit build created by Olowoniyi Daniel"
+          content="Reddit web application created by Olowoniyi Daniel"
         />
         <link
           rel="icon"
