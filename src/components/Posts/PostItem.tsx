@@ -172,6 +172,7 @@ const PostItem: React.FC<PostItemProps> = ({
                   href={`r/${post.communityId}`}
                   className="hover:underline font-[700]"
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                   }}
                 >{`r/${post.communityId}`}</Link>
