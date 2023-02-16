@@ -11,6 +11,16 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Reddit Build</title>
+        <meta
+          name="description"
+          content="Reddit build created by Olowoniyi Daniel"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="https://www.redditstatic.com/desktop2x/img/favicon/favicon-96x96.png"
+        />
       </Head>
       <RecoilRoot>
         <ChakraProvider theme={theme}>
