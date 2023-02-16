@@ -178,7 +178,7 @@ const Home = () => {
       <RecommendationsModal open={open} handleClose={() => setOpen(false)} />
       <PageContent>
         <></>
-        <div>
+        <>
           {user && <CreatePostLink />}
           {loading ? (
             <PostLoader />
@@ -202,10 +202,9 @@ const Home = () => {
                   />
                 ))}
               </Stack>
-              <Button onClick={handleClick}>load more</Button>
             </div>
           )}
-        </div>
+        </>
 
         <Stack spacing={5} position="sticky" top={!user ? "3.8rem" : ""}>
           {user && (
