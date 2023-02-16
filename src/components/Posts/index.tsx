@@ -63,7 +63,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
       {loading ? (
         <PostLoader />
       ) : (
-        <>
+        <div>
           {postStateValue.posts.length === 0 && (
             <div className="flex justify-center flex-col items-center mt-10">
               <Text>No post here yet</Text>
@@ -91,7 +91,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
               />
             ))}
           </Stack>
-        </>
+        </div>
       )}
 
       {postDeletedValue.deleted && (

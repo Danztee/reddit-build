@@ -1,6 +1,7 @@
-import { Flex, Spinner, Stack } from "@chakra-ui/react";
+import { Button, Flex, Spinner, Stack } from "@chakra-ui/react";
 import {
   collection,
+  DocumentData,
   getDocs,
   limit,
   orderBy,
@@ -8,7 +9,7 @@ import {
   startAfter,
   where,
 } from "firebase/firestore";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Post, PostVote } from "../atoms/postAtom";
 import CreatePostLink from "../components/Community/CreatePostLink";
@@ -38,19 +39,16 @@ const Home = () => {
 
   const { communityStateValue } = useCommunityData();
 
-  // let latestDoc = null;
   const buildNoUserHomeFeed = useCallback(async () => {
     setLoading(true);
     try {
       const postQuery = query(
         collection(firestore, "posts"),
-        orderBy("voteStatus", "desc"),
-        // startAfter(latestDoc || 0),
-        limit(10)
+        orderBy("voteStatus", "desc")
       );
-
       const postDocs = await getDocs(postQuery);
       const posts = postDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
       setPostStateValue((prev) => ({
         ...prev,
         posts: posts as Post[],
@@ -61,6 +59,10 @@ const Home = () => {
     setLoading(false);
     setPageLoading(false);
   }, [setPostStateValue]);
+
+  const handleClick = async () => {
+    buildNoUserHomeFeed();
+  };
 
   const buildUserHomeFeed = useCallback(async () => {
     setLoading(true);
@@ -141,6 +143,23 @@ const Home = () => {
       }, 3000);
   }, [pageLoading]);
 
+  // function isBottom(el) {
+  //   if (!el) return null;
+  //   return el.getBoundingClientRect().bottom <= window.innerHeight;
+  // }
+
+  // const trackScrolling = useCallback(async () => {
+  //   const wrappedElement = document.getElementById("header");
+  //   if (isBottom(wrappedElement)) {
+  //     console.log("header bottom reached");
+  //     // document.removeEventListener("scroll", trackScrolling);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   document.addEventListener("scroll", trackScrolling);
+  // }, [trackScrolling]);
+
   if (pageLoading)
     return (
       <Flex justifyContent="center" alignItems="center" height="30vh">
@@ -159,31 +178,34 @@ const Home = () => {
       <RecommendationsModal open={open} handleClose={() => setOpen(false)} />
       <PageContent>
         <></>
-        <>
+        <div>
           {user && <CreatePostLink />}
           {loading ? (
             <PostLoader />
           ) : (
-            <Stack>
-              {postStateValue.posts.map((post, index) => (
-                <PostItem
-                  key={index}
-                  post={post}
-                  userIsCreator={user?.uid === post.creatorId}
-                  userVoteValue={
-                    postStateValue.postVotes.find(
-                      (vote) => vote.postId === post.id
-                    )?.voteValue
-                  }
-                  onVote={onVote}
-                  onSelectPost={onSelectPost}
-                  onDeletePost={onDeletePost}
-                  homePage
-                />
-              ))}
-            </Stack>
+            <div id="header">
+              <Stack>
+                {postStateValue.posts.map((post, index) => (
+                  <PostItem
+                    key={index}
+                    post={post}
+                    userIsCreator={user?.uid === post.creatorId}
+                    userVoteValue={
+                      postStateValue.postVotes.find(
+                        (vote) => vote.postId === post.id
+                      )?.voteValue
+                    }
+                    onVote={onVote}
+                    onSelectPost={onSelectPost}
+                    onDeletePost={onDeletePost}
+                    homePage
+                  />
+                ))}
+              </Stack>
+              <Button onClick={handleClick}>load more</Button>
+            </div>
           )}
-        </>
+        </div>
 
         <Stack spacing={5} position="sticky" top={!user ? "3.8rem" : ""}>
           {user && (
