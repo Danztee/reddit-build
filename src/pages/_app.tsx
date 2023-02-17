@@ -11,11 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Reddit Build</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
         <meta
           name="description"
           content="Reddit web application created by Olowoniyi Daniel"
         />
-
         <link
           rel="apple-touch-icon"
           sizes="76x76"
