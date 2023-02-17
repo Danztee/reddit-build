@@ -15,12 +15,12 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Reddit web application created by Olowoniyi Daniel"
         />
+
         <link
-          rel="favicon"
-          type="image/png"
-          sizes="96x96"
-          href="https://www.redditstatic.com/desktop2x/img/favicon/favicon-96x96.png"
-        />
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-76x76.png"
+        ></link>
         <link
           rel="icon"
           type="image/png"
