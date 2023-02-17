@@ -169,10 +169,10 @@ const PostItem: React.FC<PostItemProps> = ({
                 )}
 
                 <Link
+                  href={`r/${post.communityId}`}
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                  href={`r/${post.communityId}`}
                   className="hover:underline font-[700]"
                 >{`r/${post.communityId}`}</Link>
                 <Icon as={BsDot} color="gray.500" fontSize={10} />
