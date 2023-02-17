@@ -13,7 +13,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Reddit Build</title>
         <meta
           name="description"
-          content="Reddit build created by Olowoniyi Daniel"
+          content="Reddit web application created by Olowoniyi Daniel"
+        />
+        <link
+          rel="favicon"
+          type="image/png"
+          sizes="96x96"
+          href="https://www.redditstatic.com/desktop2x/img/favicon/favicon-96x96.png"
         />
         <link
           rel="icon"
